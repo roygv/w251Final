@@ -1,0 +1,111 @@
+Installation notes:
+https://docs.influxdata.com/influxdb/v1.2/introduction/installation/
+
+location of the configuration file:
+/etc/influxdb/influxdb.conf
+
+run with a not default config file:
+influxd -config /etc/influxdb/influxdb.conf
+  or
+INFLUXDB_CONFIG_PATH=/etc/influxdb/influxdb.conf
+influxd
+
+======================================================
+To create users:
+CREATE USER "todd" WITH PASSWORD '123456' WITH ALL PRIVILEGES
+
+======================================================
+To enable authentication (in config file under HTTP section. Must have at least one admin user):
+  auth-enabled = true
+
+======================================================
+To enable SSL encryption of communication in transit (self signed cert):
+
+sudo openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/ssl/influxdb-selfsigned.key -out /etc/ssl/influxdb-selfsigned.crt -days 1000
+
+set in config file under the HTTP section:
+https-enabled = true
+https-certificate = "/etc/ssl/influxdb-selfsigned.crt"
+https-private-key = "/etc/ssl/influxdb-selfsigned.key"
+
+======================================================
+
+To control where the data is stored (in config file):
+[meta]
+  dir = "/mnt/db/meta"
+  ...
+...
+
+[data]
+  dir = "/mnt/db/data"
+  ...
+wal-dir = "/mnt/influx/wal"
+  ...
+...
+
+[hinted-handoff]
+    ...
+dir = "/mnt/db/hh"
+    ...
+
+chown influxdb:influxdb /mnt/influx
+chown influxdb:influxdb /mnt/db
+======================================================
+
+to install on Ubuntu:
+curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/lsb-release
+echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+
+To install:
+sudo apt-get update && sudo apt-get install influxdb
+
+To start/stop:
+sudo service influxdb start
+sudo service influxdb stop
+      or
+sudo systemctl start influxdb
+sudo systemctl stop influxdb
+
+to login via CLI:
+influx -ssl -unsafeSsl -host spark1 -precision rfc3339 -username <user> -password <password>
+or
+export INFLUX_USERNAME <user>
+export INFLUX_PASSWORD <password>
+
+to send commands via HTTP:
+query:
+curl -k -G http://spark1:8086/query -u <username>:<password> --data-urlencode "q=SHOW DATABASES"
+insert:
+curl -k -i -XPOST 'https://spark1:8086/write?db=w251' -u <username>:<password> --data-binary 'cpu_load_short,host=server01,region=us-west value=0.64 1434055562000000000'
+
+remote bulk upload from cpu_data.txt:
+
+curl -k -i -XPOST 'https://spark1:8086/write?db=w251' -u <username>:<password> --data-binary @cpu_data.txt
+
+local via cli (make sure precision matched your timestamp data):
+influx -ssl -unsafeSsl -import -path=cpu_data.txt -precision=n -username roy -password Kaftor -database w251
+
+remote via cli:
+influx -ssl -unsafeSsl -import -path=dv_5min_4_2016.txt.gz -compressed -host=spark1 -precision=s -username roy -password Kaftor -database w251
+
+cpu_data.txt:
+cpu_load_short,host=server02 value=0.67
+cpu_load_short,host=server02,region=us-west value=0.55 1422568543702900257
+cpu_load_short,direction=in,host=server01,region=us-west value=2.0 1422568543702900257
+======================================================
+Basic commands:
+
+SHOW DATABASES
+CREATE DATABASE w251
+USE w251
+INSERT cpu,host=serverA,region=us_west value=0.64
+SELECT time, host, region, value FROM cpu
+SELECT * FROM /.*/ limit 1
+
+
+
+
+
+
+
