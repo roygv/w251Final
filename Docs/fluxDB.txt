@@ -75,7 +75,7 @@ export INFLUX_PASSWORD <password>
 
 to send commands via HTTP:
 query:
-curl -k -G http://spark1:8086/query -u <username>:<password> --data-urlencode "q=SHOW DATABASES"
+curl -k -G https://spark1:8086/query -u <username>:<password> --data-urlencode "q=SHOW DATABASES"
 insert:
 curl -k -i -XPOST 'https://spark1:8086/write?db=w251' -u <username>:<password> --data-binary 'cpu_load_short,host=server01,region=us-west value=0.64 1434055562000000000'
 
