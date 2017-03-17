@@ -103,6 +103,67 @@ INSERT cpu,host=serverA,region=us_west value=0.64
 SELECT time, host, region, value FROM cpu
 SELECT * FROM /.*/ limit 1
 
+===============================
+Telegraf
+===============================
+# Installation
+wget https://dl.influxdata.com/telegraf/releases/telegraf_1.2.1_amd64.deb
+sudo dpkg -i telegraf_1.2.1_amd64.deb
+sudo systemctl start telegraf
+
+# Config file
+/etc/telegraf/telegraf.conf
+
+
+SELECT * from "w251"."autogen"."BP" WHERE "site"='67' and "data_type"='VALUE' 
+SELECT reads FROM diskio 
+ WHERE "name"='sda' 
+   AND time >= '2017-03-14T05:54:26Z' 
+   AND time < '2017-03-14T05:54:26Z' + 3m 
+ LIMIT 100
+
+# To see the log
+sudo journalctl -u telegraf.service
+
+===============================
+Chronograf
+===============================
+wget https://dl.influxdata.com/chronograf/releases/chronograf-1.2.0~beta5.x86_64.rpm
+sudo yum localinstall chronograf-1.2.0~beta5.x86_64.rpm
+
+(or see here for other distros: https://portal.influxdata.com/downloads#chronograf)
+
+Edit /etc/telegraf/telegraf.conf
+# to start
+sudo systemctl start chronograf
+
+# To see the log
+sudo journalctl -u chronograf.service
+
+==================================
+Grafana
+==================================
+#install ubuntu: see here http://docs.grafana.org/installation/debian/
+wget https://grafanarel.s3.amazonaws.com/builds/grafana_4.1.2-1486989747_amd64.deb
+sudo apt-get install -y adduser libfontconfig
+sudo dpkg -i grafana_4.1.2-1486989747_amd64.deb
+
+Package details
+
+Installs binary to /usr/sbin/grafana-server
+Installs Init.d script to /etc/init.d/grafana-server
+Creates default file (environment vars) to /etc/default/grafana-server
+Installs configuration file to /etc/grafana/grafana.ini
+Installs systemd service (if systemd is available) name grafana-server.service
+The default configuration sets the log file at /var/log/grafana/grafana.log
+The default configuration specifies an sqlite3 db at /var/lib/grafana/grafana.db
+
+
+# start service:
+sudo service grafana-server start
+# configure grafana to start at boot time
+sudo update-rc.d grafana-server defaults
+
 
 
 
