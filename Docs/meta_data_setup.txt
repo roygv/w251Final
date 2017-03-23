@@ -6,8 +6,6 @@ SANs must guarantee at least 1000 IOPS is always available to InfluxEnterprise n
 SSDs are strongly recommended, and we have had no reports of IOPS contention from any customers running on SSDs.
 
 
-
-
 1. Set up influxmetadata1:
 ==========================
 slcli vs create --datacenter=sjc01 --hostname=influxmeta1 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --disk=25G --domain mids.final --key=tb.key
@@ -22,8 +20,9 @@ ssh root@50.23.126.158
 
 
 Follow step2 from https://docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
-
 using: license-key = "a4e253de-f78c-48b3-a4cb-479a2360a4f2"
+Note: we cant't set registration-server-url yet because web-console-server will be set up later. We will have to update this change 
+after web-console-server is set up
 
 After setup, check in the  /etc/influxdb/influxdb-meta.conf to github
 
