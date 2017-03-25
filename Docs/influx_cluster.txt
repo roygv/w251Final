@@ -1,60 +1,36 @@
 ##########################################################################################################################################################
-For the Meta Nodes, I only completed STEP 2 (Set up the Meta Nodes):  docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
+http://docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
+"Each server is a meta node and a data node, that is, each server runs both the meta service and the data service."
 ##########################################################################################################################################################
 ==========================
-influxmeta1.gvirtsman.com:
+influxmetadata1.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=influxmeta1 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
-###
-Private:	10.54.136.82
-Public:		50.23.122.130
-root:		K58qz3wE
-###
-==========================
-influxmeta2.gvirtsman.com:
-==========================
-slcli vs create --datacenter=sjc01 --hostname=influxmeta2 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
-###
-Private:	10.54.136.84
-Public:		50.23.122.134
-root:		D6YrB7rD
-###
-==========================
-influxmeta3.gvirtsman.com:
-==========================
-slcli vs create --datacenter=sjc01 --hostname=influxmeta3 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
-###
-Private:	10.90.133.197
-Public:		198.11.212.204
-root:		W5hwcg8D
-###
-##########################################################################################################################################################
-For the Data Nodes, I only completed STEP 3 (Set up the Data Nodes):  docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
-##########################################################################################################################################################
-==========================
-influxdata1.gvirtsman.com:
-==========================
-slcli vs create --datacenter=sjc01 --hostname=influxdata1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=influxmetadata1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
 Private:	10.122.73.78
 Public:		169.53.133.132
-root:		C5mxlxpd
+root:		EbYXPd8P
 ###
 ==========================
-influxdata2.gvirtsman.com:
+influxmetadata2.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=influxdata2 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=influxmetadata2 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
-Private:	10.54.136.113
-Public:		50.97.244.105
-root:		MKLd95Sr
+Private:	10.122.73.81
+Public:		169.53.133.134
+root:		Tzb5Xkkf
 ###
 ==========================
-influxdata3.gvirtsman.com:
+influxmetadata3.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=influxdata3 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=influxmetadata3 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
-Private:	10.54.136.82
-Public:		50.23.122.131
-root:		N5xG9djx
+Private:	10.122.73.87
+Public:		169.53.133.133
+root:		TjU3lxV7
 ###
+
+
+?????????????????????????????????????
+set registration-server-url in the [enterprise] section to the full URL of the server that will run the InfluxEnterprise web console. You must fully specify the protocol, IP or hostname, and port. Entering the IP or hostname alone will lead to errors.
+
