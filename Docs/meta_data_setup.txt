@@ -48,4 +48,23 @@ shared-secret = "mids251"
 
 After setup, check in the  /etc/influxdb/influxdb.conf to github
 
+3. Set up block storage for both influxdata and data nodes:
+===========================================================
+In the softlayer portal pick "Storage" from the menu, click "order block storage".
+From the drop down select "Performance". 
+Select location SJC01 (MUST be the same as where your VS was provisioned)
+Select size: 250GB should be plenty
+Speficy IOPS: 1500
+
+Once the it's summitted and approved, go back to softlayer portal:
+- Storage -> Block Storage: you will see the new storage.
+- Actions drop down -> Authorize Host 
+- Pick "Devices" 
+- Device Type -> Virtual Server
+- Virtual Guest -> pick both your influxdata and influxmeta box
+- Submit
+
+Now you have both, the nodes sharing this new storage unit
+
+
 
