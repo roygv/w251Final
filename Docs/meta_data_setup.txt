@@ -1,4 +1,5 @@
-* For clusters using a license key and not a license file, all nodes must be able to contact portal.influxdata.com via port 80 or port 443. Nodes that go more than four hours without connectivity to the Portal may experience license issues.
+* For clusters using a license key and not a license file, all nodes must be able to contact portal.influxdata.com via port 80 or port 443. Nodes that go more than four 
+hours without connectivity to the Portal may experience license issues.
 Frequently Overlooked Requirements
 
 * Use SSDs: Clusters require sustained availability of 1000-2000 IOPS from the attached storage. 
@@ -8,13 +9,15 @@ SSDs are strongly recommended, and we have had no reports of IOPS contention fro
 
 1. Set up influxmetadata1:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=influxmeta1 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --disk=25G --domain gvirtsman.com --key=tb.key
+slcli vs create --datacenter=sjc01 --hostname=influxmeta1 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --disk=25G --domain mids.final --key=tb.key
 
-: 29928567 : influxmeta1  : 192.155.216.167 :  10.88.42.41  :   sjc01    :   -    :
-:   root   : Shz35eTg :
+* Question1: domain name ok?
+
+: 29832803 : influxmeta1  :  50.23.126.158  :   10.54.99.9  :   sjc01    :      -      :
+:   root   : E6j9UeCP :
 
 
-ssh root@192.155.216.167
+ssh root@50.23.126.158 
 
 
 Follow step2 from https://docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
@@ -26,17 +29,18 @@ After setup, check in the  /etc/influxdb/influxdb-meta.conf to github
 
 2. Set up influxdata1 node:
 ===========================
-I could not set up with CPU=4, RAM=10G:
+I could not set up with CPU=4, RAM=10G 
 
-slcli vs create --datacenter=sjc01 --hostname=influxdata1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 10240 --disk=25G --domain gvirtsman.com --key=tb.key
+slcli vs create --datacenter=sjc01 --hostname=influxdata1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 10240 --disk=25G --domain mids251.final --key=tb.key
 SoftLayerAPIError(SoftLayer_Exception_NotFound): Unable to find price for ram capacity of 10240.
 
 so I set up with cpu=4, ram=8GB:
 
-slcli vs create --datacenter=sjc01 --hostname=influxdata1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --disk=25G --domain gvirtsman.com --key=tb.key
+slcli vs create --datacenter=sjc01 --hostname=influxdata1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --disk=25G --domain mids251.final --key=tb.key
 
-: 29928811 : influxdata1  :  158.85.180.47  : 10.122.83.151 :   sjc01    : Check Cloud Disk Template Transfer :
 
+: 29834805 : influxdata1  :  50.23.126.157  :   10.54.99.5  :   sjc01    :   -    :
+:   root   : HHR9bWzx :
 
 Follow step3 from https://docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
 using:
