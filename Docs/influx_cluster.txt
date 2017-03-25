@@ -1,34 +1,58 @@
 ##########################################################################################################################################################
-http://docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
+docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
 "Each server is a meta node and a data node, that is, each server runs both the meta service and the data service."
 ##########################################################################################################################################################
 ==========================
-????????????????????????????????????.gvirtsman.com:
+test1.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=?????????????????? --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=test1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
-Private:	
-Public:		
-root:		
+Public:		169.53.133.132
+Private:	10.122.73.78
+root:		NLRy7dtQ
+###		
+==========================
+test2.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=test2 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Public:		169.53.133.134
+Private:	10.122.73.81
+root:		AwHb56ve
 ###
 ==========================
-?????????????????????.gvirtsman.com:
+test3.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=?????????????????? --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=test3 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
-Private:	
-Public:		
-root:		
+Public:		169.53.133.133
+Private:	10.122.73.87
+root:		Kj8C7r7a
 ###
-==========================
-??????????????????????.gvirtsman.com:
-==========================
-slcli vs create --datacenter=sjc01 --hostname=?????????????????? --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
-###
-Private:	
-Public:		
-root:		
-###
+##########################################################################################################################################################
+root@test1:~# uname -a
+Linux test1.gvirtsman.com 4.4.0-45-generic #66-Ubuntu SMP Wed Oct 19 14:12:37 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 
+root@test1:~# cat /etc/hosts
+127.0.0.1       localhost.localdomain   localhost
+169.53.133.132  test1.gvirtsman.com     test1
+127.0.1.1       test1.gvirtsman.com     test1.gvirtsman.com
 
-/etc/hosts:  
+10.122.73.78    test1.gvirtsman.com     test1
+10.122.73.81    test2.gvirtsman.com     test2
+10.122.73.87    test3.gvirtsman.com     test3
+##########################################################################################################################################################
+root@test1:~# influxd-ctl show
+Data Nodes
+==========
+ID      TCP Address                     Version
+2       test1.gvirtsman.com:8088        1.2.1-c1.2.2
+4       test3.gvirtsman.com:8088        1.2.1-c1.2.2
+
+Meta Nodes
+==========
+TCP Address                     Version
+test1.gvirtsman.com:8091        1.2.1-c1.2.2
+test2.gvirtsman.com:8091        1.2.1-c1.2.2
+test3.gvirtsman.com:8091        1.2.1-c1.2.2
+##########################################################################################################################################################
