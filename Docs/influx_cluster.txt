@@ -1,0 +1,60 @@
+##########################################################################################################################################################
+For the Meta Nodes, I only completed STEP 2 (Set up the Meta Nodes):  docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
+##########################################################################################################################################################
+==========================
+influxmeta1.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influxmeta1 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Private:	
+Public:		
+root:		
+###
+==========================
+influxmeta2.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influxmeta2 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Private:	
+Public:		
+root:		
+###
+==========================
+influxmeta3.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influxmeta3 --os UBUNTU_LATEST --billing=hourly --cpu 2 --memory 1024 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Private:	
+Public:		
+root:		
+###
+##########################################################################################################################################################
+For the Data Nodes, I only completed STEP 3 (Set up the Data Nodes):  docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation/
+##########################################################################################################################################################
+==========================
+influxdata1.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influxdata1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Private:	
+Public:		
+root:		
+###
+==========================
+influxdata2.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influxdata2 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Private:	
+Public:		
+root:		
+###
+==========================
+influxdata3.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influxdata3 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Private:	
+Public:		
+root:		
+###
