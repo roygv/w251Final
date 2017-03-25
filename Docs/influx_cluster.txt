@@ -9,7 +9,7 @@ slcli vs create --datacenter=sjc01 --hostname=test1 --os UBUNTU_LATEST --billing
 ###
 Public:		169.53.133.132
 Private:	10.122.73.78
-root:		NLRy7dtQ
+root:		NLRy7dTQ
 ###		
 ==========================
 test2.gvirtsman.com:
