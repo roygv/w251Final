@@ -12,7 +12,7 @@ Public:
 root:		
 ###
 ==========================
-??????????????????.gvirtsman.com:
+?????????????????????.gvirtsman.com:
 ==========================
 slcli vs create --datacenter=sjc01 --hostname=?????????????????? --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
@@ -21,11 +21,14 @@ Public:
 root:		
 ###
 ==========================
-influxmetadata3.gvirtsman.com:
+??????????????????????.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=influxmetadata3 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=?????????????????? --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
 Private:	
 Public:		
 root:		
 ###
+
+
+/etc/hosts:  
