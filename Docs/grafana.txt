@@ -8,5 +8,5 @@ slcli vs create --datacenter=sjc01 --hostname=grafana --os UBUNTU_LATEST --billi
 ###
 Public:		169.53.133.136
 Private:	10.122.73.100
-root:		BPk8pv4P
+root:		HP7A4f7n
 ###		
