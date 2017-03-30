@@ -29,6 +29,78 @@ Public:		169.53.133.133
 Private:	10.122.73.87
 root:		Kj8C7r7a
 ###
+==========================
+cricket001.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=cricket001 --os UBUNTU_LATEST --billing=hourly --cpu 1 --memory 1024 --network=10 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Public:		50.23.122.130
+Private:	10.54.136.82
+root:		D33fcC9H
+###
+1)	apt-get update
+2)	apt install python-minimal
+3)	apt install python-pip
+4)	pip install softlayer_messaging
+-
+root@cricket001:~# cat make_some_noize.py
+#!/usr/bin/python
+import softlayer_messaging
+import json
+
+client = softlayer_messaging.get_client('5zdc3')
+client.authenticate('SL1187241', '876a3a7bb1114096ce6a48ab6b246d23e3c9b6717dd115b37063680f92acdd04')
+
+#client.create_queue(name='cricket_queue_001', visibility_interval=10, expiration=600)
+queue = client.queue('cricket_queue_001')
+
+queue.push('<body>', fields={'field': 'value'}, visibility_delay=0)
+
+queue_message = queue.pop(count=1)
+if queue_message['item_count'] > 0:
+  print queue_message['items'][0]['body']
+  print queue_message['items'][0]['fields']['field']
+  print queue_message['items'][0]['initial_entry_time']
+  queue.message(queue_message['items'][0]['id']).delete()
+else:
+  print 'No Messages'
+-
+###
+softlayer.com/data-centers
+###
+Amsterdam 01		ams01
+Amsterdam 03		ams03
+Chennai			che01
+Dallas 01		dal01
+Dallas 02		dal02
+Dallas 05		dal05
+Dallas 06		dal06
+Dallas 07		dal07
+Dallas 09		dal09
+Dallas 10		dal10
+Dallas 12		dal12
+Dallas 13		dal13
+Frankfurt		fra02
+Hong Kong		hkg02
+Houston			hou02
+London			lon02
+Melbourne		mel01
+Milan			mil01
+Montreal		mon01
+Oslo			osl01
+Paris			par01
+Querétaro		mex01
+San Jose 01		sjc01
+San Jose 03		sjc03
+Sao Paulo		sao01
+Seattle			sea01
+Seoul 01		seo01
+Singapore		sng01
+Sydney			syd01
+Tokyo			tok02
+Toronto			tor01
+Washington, D.C. 01	wdc01
+Washington, D.C. 04	wdc04
 ##########################################################################################################################################################
 root@test1:~# uname -a
 Linux test1.gvirtsman.com 4.4.0-45-generic #66-Ubuntu SMP Wed Oct 19 14:12:37 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
