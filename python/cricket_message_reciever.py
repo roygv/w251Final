@@ -26,10 +26,13 @@ client_softlayer.authenticate('SL1187241', '876a3a7bb1114096ce6a48ab6b246d23e3c9
 # client_softlayer.create_queue(name='cricket_queue_001', visibility_interval=10, expiration=600)
 queue = client_softlayer.queue(args.queue_name)
 
-if not os.path.isfile('/root/cricket_message_reciever_running.txt'):
+# touch a file to make sure that cron does not kick off another process
+running_file_name = '/root/'+args.queue_name+'_running.txt'
+touch_running_file_name = 'touch '+running_file_name
 
-  # touch a file to make sure that cron does not kick off another process
-  os.system('touch /root/cricket_message_reciever_running.txt')
+if not os.path.isfile(running_file_name):
+
+  os.system(touch_running_file_name)
 
   # reciever runs in perpetuity until no messages are found, then it rests for a maximum of one minute until cron calls it again
   while 1 < 2:
@@ -67,6 +70,6 @@ if not os.path.isfile('/root/cricket_message_reciever_running.txt'):
 
     else:
 
-      os.remove('/root/cricket_message_reciever_running.txt')
+      os.remove(running_file_name)
       print 'No Messages'+','+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
       break
