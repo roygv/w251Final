@@ -6,6 +6,7 @@ import argparse
 import datetime
 from influxdb import InfluxDBClient
 
+# * * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_001_01 sjc01 /root/cricket_001_01_data.txt >> /root/cricket_001_01_message_generator.log 2>&1
 parser = argparse.ArgumentParser(description = 'generate data for softlayer queue'		)
 parser.add_argument(    'influx_external_ip'    , help = 'ex: 169.53.133.132'			)
 parser.add_argument(	'device_name'		, help = 'cricket_001_01'			)
