@@ -21,13 +21,13 @@ if not os.path.isfile(args.file_name):
 # GENERATE DATA ###############################################################################################
 
   number_of_measurements  = 100
-  number_of_measures      =  10
+  number_of_values        =  10
 
   f = open(args.file_name, 'w')
 
   for i in range( 1 , number_of_measurements + 1 ):
 
-    for j in range( 1 , number_of_measures + 1 ):
+    for j in range( 1 , number_of_values + 1 ):
 
       measurement	=	'measurement' + "%03d" % i
       value		=	str(random.uniform( 0 , 100 ))
@@ -39,36 +39,36 @@ if not os.path.isfile(args.file_name):
 
 # POPULATE INFLUXDB DIRECTLY BECAUSE SOFTLAYER MESSAGING IS TOO SLOW ############################################
 
-host            =       args.influx_external_ip
-port            =       8086
-user            =       'cricket'
-password        =       'cricket'
-dbname          =       'cricket_data'
-client_influxdb = InfluxDBClient(host, port, user, password, dbname)
+  host            =       args.influx_external_ip
+  port            =       8086
+  user            =       'cricket'
+  password        =       'cricket'
+  dbname          =       'cricket_data'
+  client_influxdb = InfluxDBClient(host, port, user, password, dbname)
 
-f = open(args.file_name, 'r')
+  f = open(args.file_name, 'r')
 
-for line in f:
+  for line in f:
 
-  device	=	line.strip().split(',')[0]
-  data_center	=	line.strip().split(',')[1]
-  creation_time	=	line.strip().split(',')[2]
-  measurement 	=	line.strip().split(',')[3]
-  value		=	line.strip().split(',')[4]
+    device		=	line.strip().split(',')[0]
+    data_center		=	line.strip().split(',')[1]
+    creation_time	=	line.strip().split(',')[2]
+    measurement 	=	line.strip().split(',')[3]
+    value		=	line.strip().split(',')[4]
 
-  json_body = [{"measurement" : measurement,
-                "tags"        : {
-                                 "device"      : device,
-                                 "data_center" : data_center
-                                },
-                "time"         : creation_time,
-                "fields"       : {
-                                  "value" : str(float(value))
-                                 }
-              }]
+    json_body = [{"measurement" : measurement,
+                  "tags"        : {
+                                   "device"      : device,
+                                   "data_center" : data_center
+                                  },
+                 "time"         : creation_time,
+                 "fields"       : {
+                                   "value" : str(float(value))
+                                  }
+               }]
 
-  print json_body
-  client_influxdb.write_points(json_body)
+    print json_body
+    client_influxdb.write_points(json_body)
 
-f.close()
-os.remove(args.file_name)
+  f.close()
+  os.remove(args.file_name)
