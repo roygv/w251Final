@@ -1,0 +1,22 @@
+1) slcli vs cancel 30378735
+2) slcli vs create --datacenter=hou02 --hostname=cricket016 --os UBUNTU_LATEST --billing=hourly --cpu 1 --memory 1024 --network=10 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+(Happiness, you need to modify the --key to match your key, not mine)
+3) apt-get update
+4) apt install python-minimal
+5) apt install python-pip
+6) pip install softlayer_messaging
+7) pip install influxdb
+8) Upload cricket_message_generator.py
+9) chmod 777 cricket_message_generator.py
+10)
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_01 sjc01 /root/cricket_016_01_data.txt > /root/cricket_016_01_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_02 sjc01 /root/cricket_016_02_data.txt > /root/cricket_016_02_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_03 sjc01 /root/cricket_016_03_data.txt > /root/cricket_016_03_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_04 sjc01 /root/cricket_016_04_data.txt > /root/cricket_016_04_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_05 sjc01 /root/cricket_016_05_data.txt > /root/cricket_016_05_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_06 sjc01 /root/cricket_016_06_data.txt > /root/cricket_016_06_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_07 sjc01 /root/cricket_016_07_data.txt > /root/cricket_016_07_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_08 sjc01 /root/cricket_016_08_data.txt > /root/cricket_016_08_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_09 sjc01 /root/cricket_016_09_data.txt > /root/cricket_016_09_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_10 sjc01 /root/cricket_016_10_data.txt > /root/cricket_016_10_message_generator.log 2>&1
+

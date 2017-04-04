@@ -3,6 +3,34 @@ docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation
 "Each server is a meta node and a data node, that is, each server runs both the meta service and the data service."
 ##########################################################################################################################################################
 ==========================
+influx1.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influx1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Public:		50.23.122.133
+Private:	10.54.136.71
+root:		LqAdShX3
+###		
+==========================
+influx2.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influx2 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Public:		50.23.122.132
+Private:	10.54.136.81
+root:		KPGv6rkH
+###
+==========================
+influx3.gvirtsman.com:
+==========================
+slcli vs create --datacenter=sjc01 --hostname=influx3 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Public:		50.23.122.134
+Private:	10.54.136.84
+root:		J3bN5GKu
+###
+##########################################################################################################################################################
+==========================
 test1.gvirtsman.com:
 ==========================
 slcli vs create --datacenter=sjc01 --hostname=test1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
@@ -42,39 +70,7 @@ root:		D33fcC9H
 2)	apt install python-minimal
 3)	apt install python-pip
 4)	pip install softlayer_messaging
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-root@cricket001:~# crontab -l
-* * * * * /root/cricket_message_generator.py >> /root/cricket_message_generator.log 2>&1
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-root@cricket001:~# pwd
-/root
-root@cricket001:~# ls -l
-total 12
--rw-r--r-- 1 root root 560 Mar 30 17:34 cricket_message_generator.log
--rwxrwxrwx 1 root root 726 Mar 30 17:29 cricket_message_generator.py
--rw-r--r-- 1 root root 140 Mar 30 17:26 roy_data.txt
-root@cricket001:~# cat cricket_message_generator.py
-#!/usr/bin/python
-
-import softlayer_messaging
-import datetime
-
-client = softlayer_messaging.get_client('5zdc3')
-client.authenticate('SL1187241', '876a3a7bb1114096ce6a48ab6b246d23e3c9b6717dd115b37063680f92acdd04')
-
-# all messages are visible in the queue after 10 seconds and expire after 600 seconds
-# client.create_queue(name='cricket_queue_001', visibility_interval=10, expiration=600)
-
-queue = client.queue('cricket_queue_001')
-f = open('roy_data.txt', 'r')
-
-for line in f:
-  attribute     =       line.split(',')[0]
-  value         =       line.split(',')[1]
-  device        =       'cricket001'
-  queue.push(device, fields={attribute : value}, visibility_delay=0)
-  print device, attribute, value
-print datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+5)	pip install influxdb
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 ###
 softlayer.com/data-centers
@@ -112,16 +108,6 @@ Tokyo			tok02
 Toronto			tor01
 Washington, D.C. 01	wdc01
 Washington, D.C. 04	wdc04
-##########################################################################################################################################################
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-root@cricket001:~# crontab -l
-* * * * * /root/cricket_message_reciever.py >> /root/cricket_message_reciever.log 2>&1
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-1) pip install influxdb
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 ##########################################################################################################################################################
 root@test1:~# uname -a
 Linux test1.gvirtsman.com 4.4.0-45-generic #66-Ubuntu SMP Wed Oct 19 14:12:37 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
