@@ -8,7 +8,8 @@
 7) pip install influxdb
 8) Upload cricket_message_generator.py
 9) chmod 777 cricket_message_generator.py
-10)
+10) Add to crontab -e  (crontab -l to list the crons)
+#
 * * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_01 sjc01 /root/cricket_016_01_data.txt > /root/cricket_016_01_message_generator.log 2>&1
 * * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_02 sjc01 /root/cricket_016_02_data.txt > /root/cricket_016_02_message_generator.log 2>&1
 * * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_03 sjc01 /root/cricket_016_03_data.txt > /root/cricket_016_03_message_generator.log 2>&1
@@ -19,4 +20,48 @@
 * * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_08 sjc01 /root/cricket_016_08_data.txt > /root/cricket_016_08_message_generator.log 2>&1
 * * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_09 sjc01 /root/cricket_016_09_data.txt > /root/cricket_016_09_message_generator.log 2>&1
 * * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_10 sjc01 /root/cricket_016_10_data.txt > /root/cricket_016_10_message_generator.log 2>&1
-
+#
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_11 sjc01 /root/cricket_016_11_data.txt > /root/cricket_016_11_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_12 sjc01 /root/cricket_016_12_data.txt > /root/cricket_016_12_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_13 sjc01 /root/cricket_016_13_data.txt > /root/cricket_016_13_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_14 sjc01 /root/cricket_016_14_data.txt > /root/cricket_016_14_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_15 sjc01 /root/cricket_016_15_data.txt > /root/cricket_016_15_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_16 sjc01 /root/cricket_016_16_data.txt > /root/cricket_016_16_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_17 sjc01 /root/cricket_016_17_data.txt > /root/cricket_016_17_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_18 sjc01 /root/cricket_016_18_data.txt > /root/cricket_016_18_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_19 sjc01 /root/cricket_016_19_data.txt > /root/cricket_016_19_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_20 sjc01 /root/cricket_016_20_data.txt > /root/cricket_016_20_message_generator.log 2>&1
+#
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_21 sjc01 /root/cricket_016_21_data.txt > /root/cricket_016_21_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_22 sjc01 /root/cricket_016_22_data.txt > /root/cricket_016_22_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_23 sjc01 /root/cricket_016_23_data.txt > /root/cricket_016_23_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_24 sjc01 /root/cricket_016_24_data.txt > /root/cricket_016_24_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_25 sjc01 /root/cricket_016_25_data.txt > /root/cricket_016_25_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_26 sjc01 /root/cricket_016_26_data.txt > /root/cricket_016_26_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_27 sjc01 /root/cricket_016_27_data.txt > /root/cricket_016_27_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_28 sjc01 /root/cricket_016_28_data.txt > /root/cricket_016_28_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_29 sjc01 /root/cricket_016_29_data.txt > /root/cricket_016_29_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_30 sjc01 /root/cricket_016_30_data.txt > /root/cricket_016_30_message_generator.log 2>&1
+#
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_31 sjc01 /root/cricket_016_31_data.txt > /root/cricket_016_31_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_32 sjc01 /root/cricket_016_32_data.txt > /root/cricket_016_32_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_33 sjc01 /root/cricket_016_33_data.txt > /root/cricket_016_33_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_34 sjc01 /root/cricket_016_34_data.txt > /root/cricket_016_34_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_35 sjc01 /root/cricket_016_35_data.txt > /root/cricket_016_35_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_36 sjc01 /root/cricket_016_36_data.txt > /root/cricket_016_36_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_37 sjc01 /root/cricket_016_37_data.txt > /root/cricket_016_37_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_38 sjc01 /root/cricket_016_38_data.txt > /root/cricket_016_38_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_39 sjc01 /root/cricket_016_39_data.txt > /root/cricket_016_39_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_40 sjc01 /root/cricket_016_40_data.txt > /root/cricket_016_40_message_generator.log 2>&1
+#
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_41 sjc01 /root/cricket_016_41_data.txt > /root/cricket_016_41_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_42 sjc01 /root/cricket_016_42_data.txt > /root/cricket_016_42_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_43 sjc01 /root/cricket_016_43_data.txt > /root/cricket_016_43_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_44 sjc01 /root/cricket_016_44_data.txt > /root/cricket_016_44_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_45 sjc01 /root/cricket_016_45_data.txt > /root/cricket_016_45_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_46 sjc01 /root/cricket_016_46_data.txt > /root/cricket_016_46_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_47 sjc01 /root/cricket_016_47_data.txt > /root/cricket_016_47_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_48 sjc01 /root/cricket_016_48_data.txt > /root/cricket_016_48_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_49 sjc01 /root/cricket_016_49_data.txt > /root/cricket_016_49_message_generator.log 2>&1
+* * * * * /root/cricket_message_generator.py 50.23.117.76 cricket_016_50 sjc01 /root/cricket_016_50_data.txt > /root/cricket_016_50_message_generator.log 2>&1
+#
