@@ -16,3 +16,5 @@ urls = ["http://50.23.117.76:8086"] # required
 username = "telegraf"
 password = "telegraf"
 -
+6) sudo systemctl start telegraf
+-
