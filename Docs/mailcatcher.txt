@@ -1,0 +1,22 @@
+---
+https://mailcatcher.me/
+https://docs.influxdata.com/enterprise/v1.2//guides/smtp-server/
+---
+slcli vs create --datacenter=sjc01 --hostname=mailcatcher --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Public:		192.155.209.115
+Private:	10.90.55.148
+root:		QQfa3bfT
+###		
+---
+1) sudo apt-add-repository ppa:brightbox/ruby-ng
+-
+2) sudo apt-get update
+-
+3) sudo apt-get install ruby2.2 ruby2.2-dev build-essential libsqlite3-dev
+-
+4) sudo gem install mailcatcher
+-
+5) mailcatcher --ip=0.0.0.0 --http-ip=0.0.0.0
+-
+

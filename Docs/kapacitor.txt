@@ -1,0 +1,25 @@
+---
+https://github.com/influxdata/chronograf/blob/master/docs/INSTALLATION.md
+https://docs.influxdata.com/kapacitor/v1.2/introduction/getting_started/
+---
+slcli vs create --datacenter=sjc01 --hostname=kapacitor --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Public:		158.85.160.26
+Private:	10.91.43.219
+root:		VPa9auyW
+###		
+---
+1) wget https://dl.influxdata.com/kapacitor/releases/kapacitor_1.2.0_amd64.deb
+-
+2) sudo dpkg -i kapacitor_1.2.0_amd64.deb
+-
+3) kapacitord config > kapacitor.conf
+-
+4) vi /etc/kapacitor/kapacitor.conf
+  name = "50.23.117.76"
+  urls = ["http://50.23.117.76:8086"]
+  username = "kapacitor"
+  password = "kapacitor"
+-
+5) sudo systemctl start kapacitor
+-
