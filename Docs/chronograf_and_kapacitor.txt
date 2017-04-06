@@ -5,11 +5,31 @@ slcli vs create --datacenter=sjc01 --hostname=chronograf --os UBUNTU_LATEST --bi
 ###
 Public:		50.23.122.131
 Private:	10.54.136.92
-root:		Ucd4faee
+root:		RQ32DlUt
 ###		
 ---
+1) wget https://dl.influxdata.com/chronograf/releases/chronograf_1.2.0~beta7_amd64.deb
+-
+2) sudo dpkg -i chronograf_1.2.0~beta7_amd64.deb
+-
+3) sudo systemctl start chronograf
+-
 
 *** I had some communication errors, so I installed kapacitor on the chronograf box to makes things easier:
+
+---
+https://docs.influxdata.com/kapacitor/v1.2/introduction/getting_started/
+---
+1) wget https://dl.influxdata.com/kapacitor/releases/kapacitor_1.2.0_amd64.deb
+-
+2) sudo dpkg -i kapacitor_1.2.0_amd64.deb
+-
+3) kapacitord config > kapacitor.conf
+-
+4) sudo systemctl start kapacitor
+-
+
+
 
 ---
 https://github.com/influxdata/chronograf/blob/master/docs/INSTALLATION.md
@@ -21,6 +41,13 @@ https://docs.influxdata.com/kapacitor/v1.2/introduction/getting_started/
 -
 3) kapacitord config > kapacitor.conf
 -
-4) sudo systemctl start kapacitor
+4) vi /etc/kapacitor/kapacitor.conf
+  name = "50.23.117.76"
+  urls = ["http://50.23.117.76:8086"]
+  username = "kapacitor"
+  password = "kapacitor"
 -
+5) sudo systemctl start kapacitor
+-
+
 

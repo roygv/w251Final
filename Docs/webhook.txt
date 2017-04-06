@@ -1,0 +1,4 @@
+https://hooks.slack.com/services/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
+
+
+curl -X POST --data-urlencode 'payload={"channel": "#kapacitor_alerts3", "username": "webhookbot", "text": "This is posted to #kapacitor_alerts3 and comes from a bot named webhookbot.", "icon_emoji": ":ghost:"}' https://hooks.slack.com/services/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
