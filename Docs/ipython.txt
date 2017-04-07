@@ -1,0 +1,25 @@
+---
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-jupyter-notebook-to-run-ipython-on-ubuntu-16-04
+---
+slcli vs create --datacenter=sjc01 --hostname=ipython --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+###
+Public:		50.23.100.184
+Private:	10.54.136.120
+root:		PsQ8N732
+###		
+---
+1) sudo apt-get update
+-
+2) sudo apt-get -y install python2.7 python-pip python-dev
+-
+3) sudo apt-get -y install ipython ipython-notebook
+-
+4) sudo -H pip install jupyter
+-
+5) jupyter notebook --allow-root
+-
+
+
+
+http://50.23.100.184:8888/?token=25b2d3ea2578d285ac605b1bebdb239d7a7ccd33a5d39159
+
