@@ -1,2 +1,4 @@
 *.un~
 kapacitor-1.2.0-1/kapacitor.conf~
+*.xml
+.idea/w251Final.iml
