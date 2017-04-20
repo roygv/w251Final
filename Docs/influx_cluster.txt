@@ -3,31 +3,31 @@ docs.influxdata.com/enterprise/v1.2/quickstart_installation/cluster_installation
 "Each server is a meta node and a data node, that is, each server runs both the meta service and the data service."
 ##########################################################################################################################################################
 ==========================
-influx1.gvirtsman.com:
+influx1a.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=influx1 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=influx1a --os UBUNTU_LATEST --billing=hourly --cpu 8 --memory 16384 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
-Public:		50.23.122.133
-Private:	10.54.136.71
-root:		LqAdShX3
+Public:		198.11.219.238
+Private:	10.88.154.15
+root:		P75GlDga
 ###		
 ==========================
-influx2.gvirtsman.com:
+influx2a.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=influx2 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=influx2a --os UBUNTU_LATEST --billing=hourly --cpu 1 --memory 1024 --network=10 --disk=25G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
-Public:		50.23.122.132
-Private:	10.54.136.81
-root:		KPGv6rkH
+Public:		50.23.100.179
+Private:	10.54.136.113
+root:		Dqc653ee
 ###
 ==========================
-influx3.gvirtsman.com:
+influx3a.gvirtsman.com:
 ==========================
-slcli vs create --datacenter=sjc01 --hostname=influx3 --os UBUNTU_LATEST --billing=hourly --cpu 4 --memory 8192 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
+slcli vs create --datacenter=sjc01 --hostname=influx3a --os UBUNTU_LATEST --billing=hourly --cpu 8 --memory 16384 --network=1000 --disk=100G --domain=gvirtsman.com --key=softlayerpublickey_nopass
 ###
-Public:		50.23.122.134
-Private:	10.54.136.84
-root:		J3bN5GKu
+Public:		198.11.219.236
+Private:	10.88.154.19
+root:		W6BlfTdE
 ###
 ##########################################################################################################################################################
 ==========================
@@ -81,4 +81,4 @@ Tokyo			tok02
 Toronto			tor01
 Washington, D.C. 01	wdc01
 Washington, D.C. 04	wdc04
-##########################################################################################################################################################
+##########################################################################################################################################################SSS
