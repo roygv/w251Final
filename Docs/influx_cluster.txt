@@ -30,6 +30,26 @@ Private:	10.88.154.19
 root:		W6BlfTdE
 ###
 ##########################################################################################################################################################
+###
+To prevent excessive logging
+###
+vi /etc/influxdb/influxdb.conf
+[data]
+query-log-enabled = false
+[http]
+log-enabled = false
+[subscriber]
+enabled = false
+[meta]
+logging-enabled = false
+###
+vi /etc/influxdb/influxdb-meta.conf
+logging-enabled = false
+###
+vi /etc/influx-enterprise/influx-enterprise.conf
+*NO CHANGE*
+###
+##########################################################################################################################################################
 ==========================
 cricket001.gvirtsman.com:
 ==========================
