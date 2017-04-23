@@ -10,7 +10,7 @@ slcli vs create --datacenter=sjc01 --hostname=influx1a --os UBUNTU_LATEST --bill
 Public:		198.11.219.238
 Private:	10.88.154.15
 root:		P75GlDga
-###		
+###
 ==========================
 influx2a.gvirtsman.com:
 ==========================
@@ -89,7 +89,7 @@ Milan			mil01
 Montreal		mon01
 Oslo			osl01
 Paris			par01
-Querétaro		mex01
+Querï¿½taro		mex01
 San Jose 01		sjc01
 San Jose 03		sjc03
 Sao Paulo		sao01
@@ -101,4 +101,4 @@ Tokyo			tok02
 Toronto			tor01
 Washington, D.C. 01	wdc01
 Washington, D.C. 04	wdc04
-##########################################################################################################################################################SSS
+##########################################################################################################################################################

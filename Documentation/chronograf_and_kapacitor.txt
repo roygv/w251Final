@@ -5,8 +5,8 @@ slcli vs create --datacenter=sjc01 --hostname=chronograf --os UBUNTU_LATEST --bi
 ###
 Public:		50.23.122.131
 Private:	10.54.136.92
-root:		RQ32DlUt
-###		
+root:		  RQ32DlUt
+###
 ---
 1) wget https://dl.influxdata.com/chronograf/releases/chronograf_1.2.0~beta7_amd64.deb
 -
@@ -29,7 +29,7 @@ https://docs.influxdata.com/kapacitor/v1.2/introduction/getting_started/
 4) sudo systemctl start kapacitor
 -
 
-
+*** Additional steps to connect to InfluxDB via the Load Balance
 
 ---
 https://github.com/influxdata/chronograf/blob/master/docs/INSTALLATION.md
@@ -49,5 +49,3 @@ https://docs.influxdata.com/kapacitor/v1.2/introduction/getting_started/
 -
 5) sudo systemctl start kapacitor
 -
-
-
