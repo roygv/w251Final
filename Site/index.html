@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <!-- Title -->
+    <title>Battery Storage Monitoring</title>
+    
+    <!-- Style and library import -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/style_v7.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.autocomplete.min.js"></script>
+  
+        
+        <!-- Body -->
+        <body onload="startTime()">
+            
+            <!-- Top bar -->
+            <div class="topbar container" style="text-align: center;">
+                
+                <!-- Logo -->
+                <img id="logo" src="images/cloud-bolt.png" class="left" style="margin-top:5px;margin-bottom:2px;width:35px;height:35px;display: inline-block;vertical-align: middle;" title = "Live mode"/>
+                
+                <!-- Search bar -->
+                <p class="s" style="margin-top:5px;margin-bottom:8px;"><input name="search" id="search" type="search" value="" onkeyup="this.setAttribute('value', this.value);"></p>
+                    
+                <!-- Date-->
+                <p id = "datetop" class="right" style="margin-top:8px;margin-bottom:0px;font-size:16px;position: absolute;right: 60px;display: inline-block;vertical-align: middle;"></p>
+                
+                <!-- Notification button -->
+                <div class="right toggle" style="margin-top:2px;margin-bottom:0px;display: inline-block;vertical-align: middle;">
+                    <img src="images/menu.png" style="width:35px;height:35px;" title = "Menu"/>
+                </div>
+                <span class="right notifcount" id="nbNotifications"></span>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="delay sidebar">
+                
+                <!-- Tools -->
+                <div class='sidetoggle'>Tools</div>
+                <div class="left inline onoffswitch" style="margin-top:11px; margin-left:15px">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="liveswitch" onclick='updateSwitch();' checked>
+                        <label class="onoffswitch-label" for="liveswitch">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                        </div>
+                
+                <img src="images/share.png" class="right inline" style="margin-top:10px;margin-right:12px;width:28px;height:28px;cursor:pointer;" title = "Share"/>
+                <img src="images/save.png" class="right inline" style="margin-top:10px;margin-right:12px;width:28px;height:28px;cursor:pointer;" title = "Save"/>
+                <img src="images/next.png" class="right inline" style="margin-top:10px;margin-right:12px;width:28px;height:28px;cursor:pointer;" title = "Next"/>
+                <img src="images/back.png" class="right inline" style="margin-top:10px;margin-right:12px;width:28px;height:28px;cursor:pointer;" title = "Back"/>
+                
+                <!-- Notifications -->
+                <div class='sidetoggle'>Notifications</div>
+                <div id = "notificationCenter"></div>
+                <svg id="context" width="270" height="100" style="float: bottom; margin: 15px;"></svg>
+                <div id = "histCenter"></div>
+                
+            </div>
+
+            <div class="tooltip" style="position: absolute; z-index: 10;">
+
+            </div>
+            <!-- Main content -->
+            
+            
+            <div style="display: table;margin-left:20px;margin-top:5px;">
+                <div style="display: table-row">
+                    <div style="width: 400px; display: table-cell; padding:0px;">
+                        <svg width="400" height="20"  style="display: table-cell;" class="inline">
+                            <text id="summaryMetrics" x="0" y="13" class="subTitles">Summary Metrics</text>
+                            <line x1="0" y1="100%" x2="100%" y2="100%" style="stroke:#DEDEDE;stroke-width:2" />
+                        </svg>
+                    </div>
+                    <div style="width: 100%; display: table-cell; padding:0px;" >
+                        <svg height="20"  style="width: calc(100% - 30px); display: table-cell;" class="inline">
+                            <text x="0" y="13"  class="subTitles">Alarm Overview: Battery Park, NY</text>
+                            <line x1="0" y1="100%" x2="100%" y2="100%" style="stroke:#DEDEDE;stroke-width:2" />
+                        </svg>
+                    </div>
+                </div>
+                <div style="display: table-row">
+                    <div id="powerSummary" style="width: 400px; display: table-cell; padding:0px;" >
+                        <svg id="powerSummary1"></svg>
+                        <svg id="powerSummary2"></svg>
+                        <svg id="powerSummary3"></svg>
+                    </div>
+                    <div id="canvaswrapper" class="inline" style="margin-top:10px; display: table-cell;">
+                        <canvas id="tree" width="600" height="400"></canvas>
+                        <canvas id="treetooltip" width="75" height="20"></canvas>
+                        <svg id="treesummary" width="200" height="100"></svg>
+                    </div>
+                    
+                </div>
+                <div style="display: table-row">
+                    <div style="width: 400px; display: table-cell; padding:0px;">
+                    <svg width="100%" height="20"  style="display: table-cell;">
+                        <text id="detailedMetrics" x="0" y="13"  class="subTitles">Detailed Metrics</text>
+                        <line x1="0" y1="100%" x2="100%" y2="100%" style="stroke:#DEDEDE;stroke-width:2" />
+                    </svg>
+                    </div>
+                    <div style="width: 100%; display: table-cell; padding:0px;" >
+                    <svg height="20"  style="width: calc(100% - 30px); display: table-cell;">
+                        <text id="graphTitle" x="5" y="13" class="subTitles"></text>
+                        <line x1="0" y1="100%" x2="100%" y2="100%" style="stroke:#DEDEDE;stroke-width:2" />
+                    </svg>
+                    </div>
+                </div>
+                <div style="display: table-row">
+                    <div  id="telemetryArray" box-sizing="border-box" style="display: table-cell;">
+                        <svg id="telemetryArray" width="400" height="250" class="inline">
+                        </svg>
+                    </div>
+                    <div style="width: 100%; display: table-cell; padding:0px;">
+                        <svg id="telemetryGraph" width="600" height="250" class="inline">
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+
+            
+            
+            <!-- Script import -->
+            <script type="text/javascript" src="scripts/dataModule.js"></script>
+            <script type="text/javascript" src="scripts/graphModule.js"></script>
+            <script type="text/javascript" src="scripts/buttonModule.js"></script>
+            <script type="text/javascript" src="scripts/tableModule.js"></script>
+            <script type="text/javascript" src="scripts/treeModule.js"></script>
+            <script type="text/javascript" src="scripts/notificationModule.js"></script>
+            <script type="text/javascript" src="scripts/searchModule.js"></script>
+            <script type="text/javascript" src="scripts/topbarModule.js"></script>
+            <script type="text/javascript" src="scripts/sparkline.js"></script>
+
+        </body>
+</html>
+
