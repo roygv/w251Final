@@ -1,0 +1,9 @@
+Kapacitor:	http://50.23.122.131:8888/sources/1/alert-rules
+SLACK:		https://ucbischool.slack.com/messages/C4VNP3ZF1/
+Chronograf:	http://50.23.122.131:8888/sources/1/hosts
+Cricket001:	http://50.23.122.131:8888/sources/1/hosts/cricket001.gvirtsman.com
+KMeans:		http://nbviewer.jupyter.org/github/gitlinkberkeley/ideal-spoon/blob/master/KMeans/AnomalousCricket-v011.ipynb
+TICK:		https://portal.influxdata.com/downloads
+D3.js:		http://people.ischool.berkeley.edu/~roy/batteryMon/
+Grafana:	http://169.53.133.136:3000/dashboard/db/influxdb?orgId=1
+Github:		https://github.com/roygv/w251Final
